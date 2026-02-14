@@ -1,0 +1,3 @@
+# token_config.py
+# 填入後，以後更新其他程式碼都不用再動這裡
+FINMIND_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRlIjoiMjAyNi0wMi0wNyAyMTozMDozOCIsInVzZXJfaWQiOiJ3aWxzb24wODI5IiwiZW1haWwiOiJyMDk1MzU4MjYxNkBnbWFpbC5jb20iLCJpcCI6IjEuMTYxLjE5Ni4xODkifQ.wXAkTZGocNoboj4wsiActjdRpb5RfovPqqTtlL_624g"

@@ -1,7 +1,6 @@
 import streamlit as st
 
 def render_price_header(s_name, stock_id, latest):
-    """渲染橫向報價橫條"""
     p = latest['Close']; c = latest['Change']; pc = latest['PctChange']
     o = latest['Open']; h = latest['High']; l = latest['Low']; v = int(latest['Volume'])
     color = "#ef232a" if c >= 0 else "#14b143"; sign = "+" if c >= 0 else ""
@@ -13,22 +12,20 @@ def render_price_header(s_name, stock_id, latest):
             <div style="color: #CCC; font-size: 12px;">開<br/><span style="color:#FFF; font-size:14px;">{o:.2f}</span></div>
             <div style="color: #CCC; font-size: 12px;">高<br/><span style="color:#ef232a; font-size:14px;">{h:.2f}</span></div>
             <div style="color: #CCC; font-size: 12px;">低<br/><span style="color:#14b143; font-size:14px;">{l:.2f}</span></div>
-            <div style="color: #CCC; font-size: 12px;">成交量<br/><span style="color:#FFFF00; font-size:14px;">{v:,}</span></div>
+            <div style="color: #CCC; font-size: 12px;">量<br/><span style="color:#FFFF00; font-size:14px;">{v:,}</span></div>
         </div>
     """, unsafe_allow_html=True)
 
 def render_ai_analysis_panel(analysis):
-    """渲染 AI 報告"""
-    score_color = "#00FF00" if analysis['score'] >= 10 else "#FF4B4B"
+    c = "#00FF00" if analysis['score'] >= 10 else "#FF4B4B"
     with st.expander("🤖 查看 AI 智慧分析報告", expanded=True):
         col1, col2 = st.columns([1, 2])
         col1.metric("AI 綜合評分", f"{analysis['score']} / 100")
-        col1.markdown(f"### 評等: <span style='color:{score_color}'>{analysis['rating']}</span>", unsafe_allow_html=True)
+        col1.markdown(f"### 評等: <span style='color:{c}'>{analysis['rating']}</span>", unsafe_allow_html=True)
         col2.write("**AI 分析摘要：**")
         for r in analysis['reasons']: col2.write(f"✅ {r}")
 
 def render_sidebar_news(analyzed_news, summary):
-    """在側邊欄直接顯示新聞清單"""
     st.sidebar.write("---")
     st.sidebar.subheader(f"📰 新聞 ({summary})")
     for n in analyzed_news:
