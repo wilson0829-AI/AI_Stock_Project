@@ -1,7 +1,7 @@
 import streamlit as st
 import streamlit.components.v1 as components
-from data_utils import fetch_market_data
-# 修正處：指向新的獨立大盤圖表檔
+# 修正處：從拆分後的數據模組引進
+from data_fetcher import fetch_market_data
 from charts_market import generate_market_chart
 
 
